@@ -206,7 +206,7 @@ function App() {
               margin="normal"
               value={appreciation}
               onChange={(e) => setAppreciation(e.target.value)}
-              placeholder="Your kindness, your hugs, the way you make ramen..."
+              placeholder="Your kindness, your hugs, the way you make kimchi jiggae..."
               required
               multiline
               rows={2}
