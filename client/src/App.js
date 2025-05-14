@@ -20,6 +20,7 @@ function App() {
   const [messageType, setMessageType] = useState("negative"); // new
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const [happiness, setHappiness] = useState("");
   const [action, setAction] = useState([]);
   const [appreciation, setAppreciation] = useState(""); // new
   const [openDialog, setOpenDialog] = useState(false);
@@ -173,7 +174,7 @@ function App() {
           ( 
           <>
             <InputTextField
-              messageType={'negative'}
+              messageType={'positive'}
               message={message}
               setMessage={setMessage}/>
             <TextField
