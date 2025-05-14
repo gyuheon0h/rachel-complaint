@@ -4,6 +4,7 @@ import {
   Button,
   MenuItem,
   Select,
+  Autocomplete,
   TextField,
   Typography,
   FormControl,
@@ -159,28 +160,20 @@ function App() {
             </FormControl>
 
             <FormControl fullWidth margin="normal">
-              <InputLabel id="action-label">What should Gyuheon do? 🥺</InputLabel>
-              <Select
-                labelId="action-label"
+              <Autocomplete
                 multiple
+                freeSolo
+                options={actionOptions.map((opt) => opt.label)}
                 value={action}
-                onChange={(e) => setAction(e.target.value)}
-                required
-                renderValue={(selected) =>
-                  selected
-                    .map((value) => {
-                      const found = actionOptions.find((opt) => opt.value === value);
-                      return found ? found.label : value;
-                    })
-                    .join(", ")
-                }
-              >
-                {actionOptions.map((opt) => (
-                  <MenuItem key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </MenuItem>
-                ))}
-              </Select>
+                onChange={(event, newValue) => setAction(newValue)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="What should Gyuheon do? 🥺"
+                    required
+                  />
+                )}
+              />
             </FormControl>
 
           </>
