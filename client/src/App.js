@@ -144,23 +144,30 @@ function App() {
               message={message}
               setMessage={setMessage}/>
 
-            <FormControl fullWidth margin="normal">
-              <Autocomplete
-                multiple
-                freeSolo
-                options={actionOptions.map((opt) => opt.label)}
-                value={action}
-                onChange={(event, newValue) => setAction(newValue)}
-                renderInput={(params) => (
+          <FormControl fullWidth margin="normal">
+            <Autocomplete
+              multiple
+              freeSolo
+              options={actionOptions.map((opt) => opt.label)}
+              value={action}
+              onChange={(event, newValue) => setAction(newValue)}
+              renderInput={(params) => (
+                <>
                   <TextField
                     {...params}
                     label="What should Gyuheon do? 🥺"
-                    required
                   />
-                )}
-              />
-            </FormControl>
-
+                  {/* Hidden required field */}
+                  <input
+                    style={{ display: "none" }}
+                    value={action.length > 0 ? "valid" : ""}
+                    required
+                    readOnly
+                  />
+                </>
+              )}
+            />
+          </FormControl>
           </>
         ) : (
           ( 
