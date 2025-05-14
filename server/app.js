@@ -12,8 +12,8 @@ app.use(express.json());
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.post('/send-sms', async (req, res) => {
-  const { messageType, message, severity, action, appreciation } = req.body;
-
+  const { messageType, message, severity, action, appreciation, happiness } = req.body;
+  console.log(happiness)
   let subject = "";
   let html = "";
 
@@ -35,6 +35,7 @@ app.post('/send-sms', async (req, res) => {
     html = `
       <h2>🌟 You're Loved!</h2>
       <p><strong>Message:</strong> ${message}</p>
+      <p><strong>Happiness Level:</strong> ${happiness}</p>
       <p><strong>What She Appreciates:</strong> ${appreciation}</p>
     `;
   }

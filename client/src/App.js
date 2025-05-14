@@ -51,7 +51,7 @@ function App() {
     const payload =
       messageType === "negative"
         ? { messageType, message, severity, action }
-        : { messageType, message, appreciation };
+        : { messageType, message, appreciation, happiness };
 
     try {
       const response = await fetch(
@@ -74,6 +74,7 @@ function App() {
       setAction([]);
       setAppreciation("");
       setOpenDialog(true);
+      setHappiness("");
     } catch (error) {
       console.error("Failed to send message:", error);
       alert("Failed to send message. Please try again later.");
@@ -173,6 +174,27 @@ function App() {
         ) : (
           ( 
           <>
+          <FormControl fullWidth margin="normal">
+            <InputLabel id="happiness-label">How Happy Are You? 😁</InputLabel>
+            <Select
+              labelId="happiness-label"
+              value={happiness}
+              onChange={(e) => {setHappiness(e.target.value)
+                console.log(happiness)
+              }}
+              required
+            >
+              <MenuItem value="I'm pleased 🙂">
+                I'm pleased 🙂
+              </MenuItem>
+              <MenuItem value="I'm cheerful 😀">I'm cheerful 😀</MenuItem>
+              <MenuItem value="I'm delighted 😁">I'm delighted 😁</MenuItem>
+              <MenuItem value="I'm ecstatic 😆🥹😻🥹😆">
+                I'm ecastic 😆🥹😻🥹😆
+              </MenuItem>
+            </Select>
+          </FormControl>
+
             <InputTextField
               messageType={'positive'}
               message={message}
