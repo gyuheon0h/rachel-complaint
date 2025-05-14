@@ -312,7 +312,7 @@ async function fetchMessages(username) {
 
       <Drawer anchor="left" open={sidebarOpen} onClose={toggleSidebar}>
         <Box sx={{ width: 320, p: 2 }}>
-          <Typography variant="h5" gutterBottom>📜 Your Love Messages</Typography>
+          <Typography variant="h5" gutterBottom>📜 Love Messages That You've Sent</Typography>
           {messages.length === 0 ? (
             <Typography>No messages yet 💭</Typography>
           ) : (
