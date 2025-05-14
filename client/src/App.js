@@ -114,26 +114,6 @@ function App() {
       </FormControl>
 
       <form onSubmit={handleSubmit}>
-        <TextField
-          label={
-            messageType === "negative"
-              ? "Tell Gyuheon what's wrong 💔"
-              : "Tell Gyuheon something sweet 💙"
-          }
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder={
-            messageType === "negative"
-              ? "Type your sweet angry words here..."
-              : "Type your adorable love note here..."
-          }
-          required
-          multiline
-          rows={4}
-        />
 
         {messageType === "negative" ? (
           <>
@@ -159,6 +139,11 @@ function App() {
               </Select>
             </FormControl>
 
+            <InputTextField 
+              messageType={'negative'}
+              message={message}
+              setMessage={setMessage}/>
+
             <FormControl fullWidth margin="normal">
               <Autocomplete
                 multiple
@@ -178,18 +163,25 @@ function App() {
 
           </>
         ) : (
-          <TextField
-            label="What do you appreciate? 🌟"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={appreciation}
-            onChange={(e) => setAppreciation(e.target.value)}
-            placeholder="Your kindness, your hugs, the way you make ramen..."
-            required
-            multiline
-            rows={2}
-          />
+          ( 
+          <>
+            <InputTextField
+              messageType={'negative'}
+              message={message}
+              setMessage={setMessage}/>
+            <TextField
+              label="What do you appreciate? 🌟"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={appreciation}
+              onChange={(e) => setAppreciation(e.target.value)}
+              placeholder="Your kindness, your hugs, the way you make ramen..."
+              required
+              multiline
+              rows={2}
+            />
+          </>)
         )}
 
         <Button
@@ -237,5 +229,40 @@ function App() {
     </Box>
   );
 }
+
+const InputTextField = ({
+  messageType,
+  message,
+  setMessage,
+  required = true,
+  rows = 4,
+  ...props
+}) => {
+  const isNegative = messageType === "negative";
+
+  return (
+    <TextField
+      label={
+        isNegative
+          ? "Tell Gyuheon what's wrong 💔"
+          : "Tell Gyuheon something sweet 💙"
+      }
+      variant="outlined"
+      fullWidth
+      margin="normal"
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+      placeholder={
+        isNegative
+          ? "Type your sweet angry words here..."
+          : "Type your adorable love note here..."
+      }
+      required={required}
+      multiline
+      rows={rows}
+      {...props}
+    />
+  );
+};
 
 export default App;
