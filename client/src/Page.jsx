@@ -71,7 +71,8 @@ async function fetchMessages(username) {
     { label: "📱😂 Watch TikToks with you", value: "Watch TikToks with me" },
     { label: "🧋 Buy you boba", value: "Buy me boba" },
     { label: "🍽️ Take you to dinner", value: "Take me to dinner" },
-    { label: "🕺🏻 Do an interpretive dance", value: "Do an interpretive dance" }
+    { label: "🕺🏻 Do an interpretive dance", value: "Do an interpretive dance" },
+    { label: "🏋🏼 Do 20 pushups", value: "Do 20 pushups" }
   ];
 
 
